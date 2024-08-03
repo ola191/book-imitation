@@ -1,11 +1,14 @@
 class WriteLikeRealText extends HTMLElement {
     connectedCallback() {
-        let elemWidth = this.offsetWidth
-        let elemHeight = this.offsetHeight
-        let text = this.textContent;
+        this.elemWidth = this.offsetWidth
+        this.elemHeight = this.offsetHeight
+        this.text = this.textContent;
+        let computedStyle = window.getComputedStyle(this);
+        this.fontSize = parseFloat(computedStyle.fontSize);
         this.style.position = 'relative';
         // this.textContent = '';
-        this.createCanvas(elemWidth, elemHeight);
+        this.createCanvas();
+        this.drawText();
         // this.animateText(text);
     }
 
@@ -17,20 +20,32 @@ class WriteLikeRealText extends HTMLElement {
         this.canvas.style.position = 'absolute';
         this.canvas.style.top = '0';
         this.canvas.style.left = '0';
-        this.canvas.width = elemWidth;
-        this.canvas.height = elemHeight;
-        this.canvas.style.backgroundColor = 'orange';
+        this.canvas.width = this.elemWidth;
+        this.canvas.height = this.elemHeight;
+        this.canvas.style.backgroundColor = 'white';
+        this.canvas.style.border = "1px solid black";
+        this.canvas.style.color = "black";
+        this.ctx.font = `${this.fontSize}px Arial`; 
+
     }
 
-    animateText(text) {
-        // let index = 0;
-        // const interval = setInterval(() => {
-        //     this.textContent += text[index];
-        //     index++;
-        //     if (index === text.length) {
-        //         clearInterval(interval);
-        //     }
-        // }, 100);
+    drawText() {
+        let index = 0;
+        const drawNextChar = () => {
+            if (index < this.text.length) {
+                this.drawChar(this.text[index], index);
+                index++;
+                setTimeout(drawNextChar, 200); 
+            }
+        };
+        drawNextChar();
+    }
+
+    drawChar(char, index) {
+        console.log(char);
+        let x = this.canvas.width / 2 - 10;
+        let y = this.canvas.height / 2 - 10;
+        this.ctx.fillText(char, x, y);
     }
 }
 
