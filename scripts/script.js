@@ -10,10 +10,12 @@ class WriteLikeRealText extends HTMLElement {
         this.createCanvas();
         this.drawText();
         // this.animateText(text);
+        this.revealText();
     }
 
     createCanvas(elemWidth, elemHeight) {
         this.canvas = document.createElement('canvas');
+        this.canvas.style.zIndex = "10";
         this.ctx = this.canvas.getContext('2d');
         this.appendChild(this.canvas);
 
@@ -38,7 +40,7 @@ class WriteLikeRealText extends HTMLElement {
                 this.drawChar(this.text[index], x);
                 x += this.ctx.measureText(this.text[index]).width;
                 index++;
-                setTimeout(drawNextChar, 200); 
+                setTimeout(drawNextChar, 35); 
             }
         };
         drawNextChar();
@@ -46,6 +48,10 @@ class WriteLikeRealText extends HTMLElement {
 
     drawChar(char, x) {
         this.ctx.fillText(char, x, this.y);
+    }
+
+    revealText() {
+        this.classList.add('reveal');
     }
 }
 
