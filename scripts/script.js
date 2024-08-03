@@ -6,7 +6,7 @@ class WriteLikeRealText extends HTMLElement {
         let computedStyle = window.getComputedStyle(this);
         this.fontSize = parseFloat(computedStyle.fontSize);
         this.style.position = 'relative';
-        // this.textContent = '';
+        this.textContent = '';
         this.createCanvas();
         this.drawText();
         // this.animateText(text);
@@ -19,21 +19,24 @@ class WriteLikeRealText extends HTMLElement {
 
         this.canvas.style.position = 'absolute';
         this.canvas.style.top = '0';
-        this.canvas.style.left = '0';
+        this.canvas.style.left = '0 ';
         this.canvas.width = this.elemWidth;
         this.canvas.height = this.elemHeight;
-        this.canvas.style.backgroundColor = 'white';
+        // this.canvas.style.backgroundColor = 'white';
         this.canvas.style.border = "1px solid black";
         this.canvas.style.color = "black";
         this.ctx.font = `${this.fontSize}px Arial`; 
 
+        this.y = this.canvas.height / 2 + this.fontSize / 2 - 7.5;
     }
 
     drawText() {
         let index = 0;
+        let x = 10;
         const drawNextChar = () => {
             if (index < this.text.length) {
-                this.drawChar(this.text[index], index);
+                this.drawChar(this.text[index], x);
+                x += this.ctx.measureText(this.text[index]).width;
                 index++;
                 setTimeout(drawNextChar, 200); 
             }
@@ -41,11 +44,8 @@ class WriteLikeRealText extends HTMLElement {
         drawNextChar();
     }
 
-    drawChar(char, index) {
-        console.log(char);
-        let x = this.canvas.width / 2 - 10;
-        let y = this.canvas.height / 2 - 10;
-        this.ctx.fillText(char, x, y);
+    drawChar(char, x) {
+        this.ctx.fillText(char, x, this.y);
     }
 }
 
