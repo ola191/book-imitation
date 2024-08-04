@@ -8,8 +8,7 @@ body {
   min-height: 100vh;
   background-color: white;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
   font-size: 50px;
 }
 
@@ -20,7 +19,8 @@ writereal-text {
   height: 100%;
 }
 
-div {
+.container {
+  margin: 10vh 0 0 5vw;
   display: flex;
   padding: 0.25em;
   border: 4px solid lavender;
@@ -28,6 +28,13 @@ div {
   height: 1.4em;
   align-items: center;
   justify-content: center;
+}
+
+#nav {
+  display: flex;
+  width: 100vw;
+  height: 5vh;
+  border: 2px solid sandybrown;
 }
 
 .reveal {

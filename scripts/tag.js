@@ -35,27 +35,27 @@ class WriteLikeRealText extends HTMLElement {
 
     }
 
-    drawText() {
-        let index = 0;
-        let x = 10;
-        const drawNextChar = () => {
-            if (index < this.text.length) {
-                this.drawChar(this.text[index], x);
-                x += this.ctx.measureText(this.text[index]).width;
-                index++;
-                setTimeout(drawNextChar, 35); 
-            }
-        };
-        drawNextChar();
-    }
+    // drawText() {
+    //     let index = 0;
+    //     let x = 10;
+    //     const drawNextChar = () => {
+    //         if (index < this.text.length) {
+    //             this.drawChar(this.text[index], x);
+    //             x += this.ctx.measureText(this.text[index]).width;
+    //             index++;
+    //             setTimeout(drawNextChar, 35); 
+    //         }
+    //     };
+    //     drawNextChar();
+    // }
 
-    drawChar(char, x) {
-        this.ctx.fillText(char, x, this.y);
-    }
+    // drawChar(char, x) {
+    //     this.ctx.fillText(char, x, this.y);
+    // }
 
-    revealText() {
-        this.classList.add('reveal');
-    }
+    // revealText() {
+    //     this.classList.add('reveal');
+    // }
 }
 
 customElements.define('writereal-text', WriteLikeRealText);
