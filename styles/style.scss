@@ -1,3 +1,5 @@
+$time : 5;
+
 * {
     margin: 0;
     padding: 0;
@@ -9,61 +11,59 @@ body {
     background-color: white;
     display: flex;
     flex-direction: column;
-    font-size: 50px;
-}
-
-writereal-text {
-    font-size: 40px;
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-.container {
-    margin: 10vh 0 0 5vw;
-    display: flex;
-    padding: 0.25em;
-    border: 4px solid lavender;
-    width: 5em;
-    height: 1.4em;
     align-items: center;
     justify-content: center;
 }
 
-#nav {
+book {
+    width: 42em;
+    height: 30em;
     display: flex;
-    width: 100vw;
-    height: 5vh;
-    border: 2px solid sandybrown;
+    flex-direction: row;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    transform: scale(1);
 }
 
-.reveal {
-    position: relative;
-    z-index: 200;
-}
-
-.reveal::after {
-    content: "";
+page {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 200;
-    background-color: white !important;
-    animation: reveal 1s cubic-bezier(0.2, 0.6, 0.4, 0.9) forwards;
-
+    display: flex;
+    width: 21em;
+    height: 30em;
+    background-color:white;
+    box-shadow : inset rgba(0,0,0,.3) 0px 0px 100px, rgba(0,0,0,.4) 0px 4px 10px;
+    border: 2px solid burlywood;
 }
 
-@keyframes reveal {
+page[data-number="4"] {
+    background-color: burlywood;
+    transform-origin: right bottom;
+    animation: pageFlip calc($time * 1s) calc($time * 0.5s) cubic-bezier(0.445, 0.05, 0.55, 0.95) forwards;
+}
+
+page[data-number="3"] {
+    background-color:white;
+    transform-origin: right bottom;
+    animation: pageFlip calc($time * 1s) calc($time * 1s) cubic-bezier(0.445, 0.05, 0.55, 0.95) forwards;
+}
+
+page[data-number="2"] {
+    background-color:white;
+    transform-origin: right bottom;
+    animation: pageFlip calc($time * 1s) calc($time * 1.5s) cubic-bezier(0.445, 0.05, 0.55, 0.95) forwards;
+}
+
+page[data-number="1"] {
+    background-color: burlywood;
+    transform-origin: right bottom;
+    animation: pageFlip calc($time * 1s) calc($time * 2s) cubic-bezier(0.445, 0.05, 0.55, 0.95) forwards;
+}
+
+@keyframes pageFlip {
     0% {
-        transform: scaleX(1);
-        transform-origin: right;
-        opacity: 1;
+        transform: rotateY(0deg);
     }
     100% {
-        transform: scaleX(0);
-        transform-origin: right;
-        opacity: 1;
+        transform: rotateY(180deg);
     }
 }

@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Template</title>
+    <title>book.js</title>
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-    <div id="nav">
-        <writereal-text id="writereal-text">Title</writereal-text>
-    </div>
-    <div class="container">
-        <writereal-text id="writereal-text">some text</writereal-text>
-    </div>
-    <script src="scripts/convert.js" type="module"></script>
-    <script src="scripts/tag.js" type="module"></script>
+    <book>
+        <page data-number=1></page>
+        <page data-number=2></page>
+        <page data-number=3></page>
+        <page data-number=4></page>
+    </book>
+    <script src="scripts/book.js"></script>
 </body>
 </html>
