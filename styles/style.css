@@ -36,25 +36,25 @@ page {
 page[data-number="4"] {
   background-color: burlywood;
   transform-origin: right bottom;
-  animation: pageFlip 5s 2.5s cubic-bezier(0.445, 0.05, 0.55, 0.95) forwards;
+  animation: pageFlip 1.8s 2s cubic-bezier(0.445, 0.05, 0.55, 0.95) forwards;
 }
 
 page[data-number="3"] {
   background-color: white;
   transform-origin: right bottom;
-  animation: pageFlip 5s 5s cubic-bezier(0.445, 0.05, 0.55, 0.95) forwards;
+  animation: pageFlip 1.8s 4s cubic-bezier(0.445, 0.05, 0.55, 0.95) forwards;
 }
 
 page[data-number="2"] {
   background-color: white;
   transform-origin: right bottom;
-  animation: pageFlip 5s 7.5s cubic-bezier(0.445, 0.05, 0.55, 0.95) forwards;
+  animation: pageFlip 1.8s 6s cubic-bezier(0.445, 0.05, 0.55, 0.95) forwards;
 }
 
 page[data-number="1"] {
   background-color: burlywood;
   transform-origin: right bottom;
-  animation: pageFlip 5s 10s cubic-bezier(0.445, 0.05, 0.55, 0.95) forwards;
+  animation: pageFlip 1.8s 8s cubic-bezier(0.445, 0.05, 0.55, 0.95) forwards;
 }
 
 @keyframes pageFlip {
@@ -64,4 +64,7 @@ page[data-number="1"] {
   100% {
     transform: rotateY(180deg);
   }
+}
+.flip {
+  z-index: 0;
 }
